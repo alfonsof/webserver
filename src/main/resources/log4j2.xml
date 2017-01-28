@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+<!--<Configuration status="TRACE">-->
+  <properties>
+	<property name="name">werserver</property>
+	<property name="pattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</property>
+  </properties>
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="${pattern}"/>
+    </Console>
+<!--
+    <File name="File" fileName="logs/werserver.log">
+      <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </File>
+-->
+    <RollingFile name="RollingFile" fileName="logs/${name}.log"
+				filePattern="logs/$${date:yyyy-MM}/${name}-%d{yyyy-MM-dd}-%i.log.zip">
+	  <PatternLayout>
+		<pattern>${pattern}</pattern>
+	  </PatternLayout>
+	  <Policies>
+	    <!--<OnStartupTriggeringPolicy />  -->
+		<TimeBasedTriggeringPolicy /> <!-- Rotated everyday -->
+		<SizeBasedTriggeringPolicy size="20 MB"/> <!-- Or every 20 MB -->
+	  </Policies>
+	  <DefaultRolloverStrategy max="20"/>
+	</RollingFile>
+  </Appenders>
+  <Loggers>
+    <Root level="INFO">
+<!--      <Root level="TRACE">-->  
+      <AppenderRef ref="Console"/>
+<!--      <AppenderRef ref="File"/>  -->
+      <AppenderRef ref="RollingFile"/>
+    </Root>
+  </Loggers>
+</Configuration>

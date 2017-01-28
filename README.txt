@@ -66,7 +66,7 @@ Notes
     java -Dlog4j.configurationFile=resources/log4j2.xml -jar webserver.jar
   
     Run the Web Server using a configuration on logging, writing informative, warning and error messages in the console and in a rolling file in "logs" directory.
-  
+
 - In the document root "wwwdocs", there are several documents for testing the Web Server:
 
   - index.html		Simple html page
