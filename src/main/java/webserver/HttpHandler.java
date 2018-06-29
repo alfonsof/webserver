@@ -17,11 +17,10 @@ import org.apache.logging.log4j.Logger;
 /**
  * Manages the http request and response
  * @author      Alfonso Fernandez-Barandiaran
- * @version     1.1
- * @since       2016-12-04
  */
 
 public class HttpHandler {
+	
 	private static final Logger logger = LogManager.getLogger(HttpHandler.class.getName());
 	private ServerSettings serverSettings;
 	private Socket clientSocket = null;
@@ -51,24 +50,19 @@ public class HttpHandler {
    	    
    	    try {
    	    	logger.trace("read()");
-   	    	if (request.read()) {
-   	   	    	logger.trace("write()");
-   	   	    	response.write();
+   	    	if (request.readRequest()) {
+   	   	    	logger.trace("handleConnection - writeResponse");
+   	   	    	response.writeResponse();
    	    	} else { // Wrong message in read()
-   	   	    	response.httpError(writer, "", ServerSettings.HTTP_STR_REQUEST_TIMEOUT, ServerSettings.HTTP_STR_REQUEST_TIMEOUT);
-   	   	    	writer.flush();
-   	   	    	logger.info(ServerSettings.HTTP_STR_BAD_REQUEST);
+   	    		logger.trace("handleConnection - BadRequest");
+   	    		response.writeBadRequestResponse(writer);
    	    	}
    	    } catch (SocketTimeoutException e) {
-   	    	response.httpError(writer, "", ServerSettings.HTTP_STR_REQUEST_TIMEOUT, ServerSettings.HTTP_STR_REQUEST_TIMEOUT);
-   	    	writer.flush();
-   	    	logger.info(ServerSettings.HTTP_STR_REQUEST_TIMEOUT);
-   	    	logger.info("HttpHandler 1: ", e);
+   	    	logger.trace("handleConnection - SocketTimeoutException: ", e);
+   	    	response.writeRequestTimeoutResponse(writer);
    	    } catch (SocketException e) {
-   	    	response.httpError(writer, "", ServerSettings.HTTP_STR_SERVER_ERROR, ServerSettings.HTTP_STR_SERVER_ERROR);
-   	    	writer.flush();
-   	    	logger.info(ServerSettings.HTTP_STR_SERVER_ERROR);
-   	    	logger.info("HttpHandler 2: ", e);
+   	    	logger.trace("handleConnection - SocketException: ", e);
+   	    	response.writeServerErrortResponse(writer);
    	    }
 
         writer.close();

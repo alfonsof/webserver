@@ -10,8 +10,6 @@ import org.apache.logging.log4j.Logger;
 /**
  * Contains the settings of the Web Server and read of configuration file
  * @author      Alfonso Fernandez-Barandiaran
- * @version     1.1
- * @since       2016-12-04
  */
 
 public class ServerSettings {
@@ -32,12 +30,27 @@ public class ServerSettings {
     public static final boolean DIRECTORY_LISTING = true;
     
     /**
-     * Document root directory by default
+     * Threads number by default
      */
     public static final int N_THREADS_DEFAULT = 10;
+    
+    /**
+     * Max buffer size for a file by default
+     */
+    public static final int FILE_BUFFER_SIZE = 65536;
 
     /**
-     * Config file properties names for Server port number 
+     * The socket timeout when waiting for line request by default
+     */
+    public static final int REQUEST_READ_TIMEOUT = 5000;
+
+    /**
+     * The socket timeout when waiting for headers by default
+     */
+    public static final int HEADER_READ_TIMEOUT = 2000;
+
+    /**
+     * Config file properties names for Server port number
      */
     public static final String SERVER_PORT_PROP_NAME = "ServerPort";
 
@@ -105,19 +118,21 @@ public class ServerSettings {
     private int nThreads = N_THREADS_DEFAULT;
 	
     // Max buffer size for a file
-    private int fileBufferSize = 65536;
+    private int fileBufferSize = FILE_BUFFER_SIZE;
 
     // The socket timeout when waiting for line request
-    private int requestReadTimeout = 5000;
+    private int requestReadTimeout = REQUEST_READ_TIMEOUT;
 
     // The socket timeout when waiting for headers
-    private int headerReadTimeout = 2000;
+    private int headerReadTimeout = HEADER_READ_TIMEOUT;
 
     /**
      * Class constructor
      */
-    public ServerSettings() {
-    	readConfig();
+    public ServerSettings(boolean readConfigFile) {
+    	if (readConfigFile) {
+    		readConfig();
+    	}
     }
     
     /**
@@ -176,17 +191,6 @@ public class ServerSettings {
     	return headerReadTimeout;
     }
 
-    // Put Directory Listing value
-    private boolean getDirectoryListing(String value) {
-    	boolean dirListing = false;
-    	
-		if ("y".equalsIgnoreCase(value)) {
-			dirListing = true;
-		}
-		
-		return dirListing;
-    }
-    
     // Read properties file for configuring the Web Server
     private void readConfig() {
     	Properties props = new Properties();
@@ -242,4 +246,15 @@ public class ServerSettings {
 		logger.trace("Header Read Timeout: " + headerReadTimeout);
     }
 
+    // Put Directory Listing value
+    private boolean getDirectoryListing(String value) {
+    	boolean dirListing = false;
+    	
+		if ("y".equalsIgnoreCase(value)) {
+			dirListing = true;
+		}
+		
+		return dirListing;
+    }
+    
 }

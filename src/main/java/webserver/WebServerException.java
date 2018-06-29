@@ -3,8 +3,6 @@ package webserver;
 /**
  * Manages the WebServerException
  * @author      Alfonso Fernandez-Barandiaran
- * @version     1.1
- * @since       2016-12-04
  */
 
 public class WebServerException extends RuntimeException {

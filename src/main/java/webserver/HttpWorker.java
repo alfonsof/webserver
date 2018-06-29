@@ -9,15 +9,13 @@ import org.apache.logging.log4j.Logger;
 /**
  * Implements the worker in order to manage every http connection 
  * @author      Alfonso Fernandez-Barandiaran
- * @version     1.1
- * @since       2016-12-04
  */
 
 public class HttpWorker implements Runnable {
 
 	private static final Logger logger = LogManager.getLogger(HttpWorker.class.getName());
 	private ServerSettings serverSettings;
-    protected Socket clientSocket = null;
+	private Socket clientSocket = null;
 
     /**
      * Class constructor

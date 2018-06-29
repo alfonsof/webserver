@@ -1,4 +1,4 @@
-package webserver;
+package webserver; 
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,8 +15,6 @@ import org.apache.logging.log4j.Logger;
 /**
  * Manages the http request
  * @author      Alfonso Fernandez-Barandiaran
- * @version     1.1
- * @since       2016-12-04
  */
 
 public class Request {
@@ -28,7 +26,6 @@ public class Request {
 	private InputStream input;
 	private BufferedReader reader;
 	private String requestLine;
-	private Map<String, String> headersRequest;
 	
     /**
      * Class constructor
@@ -52,11 +49,13 @@ public class Request {
      *                     exception occurred
      * @return boolean
      */
-	public boolean read() throws IOException {
-		this.requestLine = readRequestLine();
-	    if ((this.requestLine != null) && (!"".equals(this.requestLine))) {  // No empty requestLine
-		    this.headersRequest = readHeaders(reader);
-		    if (this.headersRequest != null) {  // No empty headersRequest
+	public boolean readRequest() throws IOException {
+		Map<String, String> requestHeaders;
+		
+		requestLine = readRequestLine();
+	    if ((requestLine != null) && (!"".equals(this.requestLine))) {  // No empty requestLine
+		    requestHeaders = readRequestHeaders(reader);
+		    if (!requestHeaders.isEmpty()) {  // No empty requestHeaders
 		    	return true;
 		    }
 	    }
@@ -72,14 +71,6 @@ public class Request {
 		return this.requestLine;
 	}
 	
-    /**
-     * Read the head of the request
-     * @return Map(String, String)
-     */
-	public Map<String, String> getHeadersRequest() {
-		return this.headersRequest;
-	}
-
 	private String readRequestLine() throws IOException {
     	String reqLine;
     	
@@ -90,7 +81,7 @@ public class Request {
    	    return reqLine;
     }
     
-    private Map<String, String> readHeaders(BufferedReader reader) throws IOException {
+    private Map<String, String> readRequestHeaders(BufferedReader reader) throws IOException {
         Map<String, String> headers = new LinkedHashMap<>();
         int length;
         

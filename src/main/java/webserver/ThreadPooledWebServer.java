@@ -12,8 +12,6 @@ import org.apache.logging.log4j.LogManager;
 /**
  * Manages the thread pooled web server
  * @author      Alfonso Fernandez-Barandiaran
- * @version     1.1
- * @since       2016-12-04
  */
 
 
@@ -23,7 +21,6 @@ public class ThreadPooledWebServer implements Runnable {
     private int          	serverPort    = 9090;
     private ServerSocket 	serverSocket  = null;
     private boolean      	isStopped     = false;
-    private Thread       	runningThread = null;
     private ExecutorService threadPool;
 
     /**
@@ -41,6 +38,8 @@ public class ThreadPooledWebServer implements Runnable {
      */
     @Override
     public void run() {
+        Thread       	runningThread = null;
+        
         synchronized (this) {
             runningThread = Thread.currentThread();
             logger.trace("runningThread: " + runningThread);

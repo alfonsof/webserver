@@ -43,9 +43,8 @@ The Web Server uses these libraries:
 Notes
 -----
 
-- Creating the jar files in "target" with maven and goals "package" (mvn package) (Eclipse Run: Websever-package):
-  - webserver.jar: 				JAR no including dependencies
-  - webserver-jar-with-dependencies.jar: 	JAR with dependencies
+- Creating the jar file in "target" with maven and goals "package" (mvn package) (Eclipse Run: Websever-package):
+  - webserver.jar: 				JAR including dependencies
 
 - Creating the jar file with Eclipse in WebServer root:
     - File/Export

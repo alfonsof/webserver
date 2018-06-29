@@ -1,0 +1,6 @@
+projectKey=com.alfonsof.webserver:WebServer
+serverUrl=http://localhost:9000
+serverVersion=7.1.0.11001
+dashboardUrl=http://localhost:9000/dashboard/index/com.alfonsof.webserver:WebServer
+ceTaskId=AWRM1bPEH6D1X1Q23cA4
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWRM1bPEH6D1X1Q23cA4
