@@ -35,3 +35,6 @@ out/
 # Sonar scanner
 .scannerwork
 .sonar
+
+# Libs
+lib/
