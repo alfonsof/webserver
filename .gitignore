@@ -31,3 +31,7 @@ out/
 
 # Mac
 .DS_Store
+
+# Sonar scanner
+.scannerwork
+.sonar
