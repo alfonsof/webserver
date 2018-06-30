@@ -78,6 +78,8 @@ Notes
     
 - In the document root "wwwdocs", there are several documents for testing the Web Server:
 
+  | File		    | Comment                                   |
+  | --------------- | ----------------------------------------- |
   | index.html		| Simple html page                          |
   | images.html		| Html page containing 49 images            |
   | img/*.gif		| Images for images.html page               |
