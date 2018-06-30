@@ -43,16 +43,22 @@ The Web Server uses these libraries:
 Notes
 -----
 
-- Creating the jar file in "target" with maven and goals "package" (mvn package) (Eclipse Run: Websever-package):
-  - webserver.jar: 				JAR including dependencies
+- Create the jar file:
 
-- Creating the jar file with Eclipse in WebServer root:
+  You can create it in 2 ways:
+  
+  - with maven and goals "package" (mvn package) (Eclipse Run: Websever-package):
+    - webserver.jar: 				JAR including dependencies
+
+  - with Eclipse in WebServer root:
     - File/Export
     - Runnable JAR file
     - Extract required libraries into generated JAR
     - webserver.jar generated
 
-- You can run the Web Server "webserver.jar" in 2 ways:
+- Run the Web Server "webserver.jar":
+  
+  You can run it in 2 ways:
 
   - Using default configuration on logging (only error messages to console).
   
@@ -83,4 +89,4 @@ Notes
 
 - You can test the WebServer using the class "WebServerTest".
 
-- You can find Javadoc documentation in "doc" directory.
+- The Javadoc documentation in "doc" directory.
