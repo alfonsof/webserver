@@ -54,17 +54,17 @@ Notes
 
 - You can run the Web Server "webserver.jar" in 2 ways:
 
-  - Executing this command:
+  - Using default configuration on logging (only error messages to console).
+  
+    Executing this command:
   
     java -jar webserver.jar
 
-    Run the Web Server using default configuration on logging (only error messages to console).
-
-  - Executing this command:
+  - Using a configuration on logging, writing informative, warning and error messages in the console and in a rolling file in "logs" directory.
+  
+    Executing this command:
 
     java -Dlog4j.configurationFile=resources/log4j2.xml -jar webserver.jar
-  
-    Run the Web Server using a configuration on logging, writing informative, warning and error messages in the console and in a rolling file in "logs" directory.
   
 - In the document root "wwwdocs", there are several documents for testing the Web Server:
 
