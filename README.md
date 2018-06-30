@@ -78,19 +78,19 @@ Notes
     
 - In the document root "wwwdocs", there are several documents for testing the Web Server:
 
-  - index.html		Simple html page
-  - images.html		Html page containing 49 images
-  - img/*.gif		Images for images.html page
-  - dir/dir.html	Directory containing a simple html page
-  - imggiftest.gif	Simple image in GIF format
-  - imgjpgtest.jpg	Simple image in JPG format
-  - imgpngtest.png	Simple image in PNG format
-  - wordtest.doc	Simple word 97-2004 document
-  - wordtest.docx	Simple word document
-  - pdftest.pdf		Simple pdf document
-  - exceltest.xls	Simple excel 97-2004 spreadsheet
-  - exceltest.xlsx	Simple excel spreadsheet
-
+  | index.html		| Simple html page                          |
+  | images.html		| Html page containing 49 images            |
+  | img/*.gif		| Images for images.html page               |
+  | dir/dir.html	| Directory containing a simple html page   |
+  | imggiftest.gif	| Simple image in GIF format                |
+  | imgjpgtest.jpg	| Simple image in JPG format                |
+  | imgpngtest.png	| Simple image in PNG format                |
+  | wordtest.doc	| Simple word 97-2004 document              |
+  | wordtest.docx	| Simple word document                      |
+  | pdftest.pdf		| Simple pdf document                       |
+  | exceltest.xls	| Simple excel 97-2004 spreadsheet          |
+  | exceltest.xlsx	| Simple excel spreadsheet                  |
+  
 - You can test the WebServer using the class "WebServerTest".
 
 - The Javadoc documentation in "doc" directory.
