@@ -1,6 +1,5 @@
 /**
  * HttpWorker: Implements the worker in order to manage every http connection 
- * @author      Alfonso Fernandez-Barandiaran
  */
 
 package webserver;
@@ -10,6 +9,10 @@ import java.net.Socket;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Implements the worker in order to manage every http connection 
+ * @author      Alfonso Fernandez-Barandiaran
+ */
 public class HttpWorker implements Runnable {
 
 	private static final Logger logger = LogManager.getLogger(HttpWorker.class.getName());

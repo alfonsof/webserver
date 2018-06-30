@@ -1,10 +1,13 @@
 /**
  * WebServerException: Manages the WebServerException
- * @author      Alfonso Fernandez-Barandiaran
  */
 
 package webserver;
 
+/**
+ * Manages the WebServerException
+ * @author      Alfonso Fernandez-Barandiaran
+ */
 public class WebServerException extends RuntimeException {
 	
 	/**

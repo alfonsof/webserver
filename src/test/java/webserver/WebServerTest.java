@@ -1,7 +1,6 @@
 /**
  * Test the Web Server
- * @author      Alfonso Fernandez-Barandiaran
- */
+*/
 
 package webserver;
 
@@ -21,6 +20,10 @@ import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ * Test the Web Server
+ * @author      Alfonso Fernandez-Barandiaran
+ */
 public class WebServerTest {
 
 	private static final String LOCAL_HOST_TEXT = "http://localhost:";

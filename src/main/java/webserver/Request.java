@@ -1,6 +1,5 @@
 /**
  * Request: Manages the http request
- * @author      Alfonso Fernandez-Barandiaran
  */
 
 package webserver; 
@@ -16,6 +15,10 @@ import java.util.regex.Pattern;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Manages the http request
+ * @author      Alfonso Fernandez-Barandiaran
+ */
 public class Request {
 
 	private static final Pattern HEADER_LINE_ACCEPTED = Pattern.compile("([^:]*):\\s*(.*)");

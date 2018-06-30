@@ -1,6 +1,5 @@
 /**
  * ThreadPooledWebServer: Manages the thread pooled web server
- * @author      Alfonso Fernandez-Barandiaran
  */
 
 package webserver;
@@ -13,6 +12,10 @@ import java.util.concurrent.Executors;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
+/**
+ * Manages the thread pooled web server
+ * @author      Alfonso Fernandez-Barandiaran
+ */
 public class ThreadPooledWebServer implements Runnable {
 	private static final Logger logger = LogManager.getLogger(ThreadPooledWebServer.class.getName());
 	private ServerSettings 	serverSettings;

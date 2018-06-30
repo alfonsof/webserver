@@ -1,6 +1,5 @@
 /**
  * ServerSettings: Contains the settings of the Web Server and read of configuration file
- * @author      Alfonso Fernandez-Barandiaran
  */
 
 package webserver;
@@ -11,6 +10,10 @@ import java.util.Properties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Contains the settings of the Web Server and read of configuration file
+ * @author      Alfonso Fernandez-Barandiaran
+ */
 public class ServerSettings {
 	
     /**
@@ -127,6 +130,7 @@ public class ServerSettings {
 
     /**
      * Class constructor
+     * @param readConfigFile	true = read config file / false = not read config file  
      */
     public ServerSettings(boolean readConfigFile) {
     	if (readConfigFile) {

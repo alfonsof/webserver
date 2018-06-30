@@ -1,6 +1,5 @@
 /**
  * Response: Manages the http response
- * @author      Alfonso Fernandez-Barandiaran
  */
 
 package webserver;
@@ -19,6 +18,10 @@ import java.util.regex.Pattern;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Manages the http response
+ * @author      Alfonso Fernandez-Barandiaran
+ */
 public class Response {
 	
 	private static final Pattern REQUEST_LINE_ACCEPTED = Pattern.compile("(GET|HEAD) ([^ ]+) HTTP/(\\d\\.\\d)");

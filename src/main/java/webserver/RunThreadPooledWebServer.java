@@ -1,6 +1,5 @@
 /**
  * RunThreadPooledWebServer: Main class runs the Web Server
- * @author      Alfonso Fernandez-Barandiaran
  */
 
 package webserver;
@@ -9,6 +8,10 @@ import java.io.File;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * Main class runs the Web Server
+ * @author      Alfonso Fernandez-Barandiaran
+ */
 public class RunThreadPooledWebServer {
 	private static final Logger logger = LogManager.getLogger(RunThreadPooledWebServer.class.getName());
 	
