@@ -1,16 +1,15 @@
+/**
+ * ServerSettings: Contains the settings of the Web Server and read of configuration file
+ * @author      Alfonso Fernandez-Barandiaran
+ */
+
 package webserver;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-/**
- * Contains the settings of the Web Server and read of configuration file
- * @author      Alfonso Fernandez-Barandiaran
- */
 
 public class ServerSettings {
 	
@@ -256,5 +255,4 @@ public class ServerSettings {
 		
 		return dirListing;
     }
-    
 }

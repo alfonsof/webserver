@@ -1,9 +1,9 @@
-package webserver;
-
 /**
- * Manages the WebServerException
+ * WebServerException: Manages the WebServerException
  * @author      Alfonso Fernandez-Barandiaran
  */
+
+package webserver;
 
 public class WebServerException extends RuntimeException {
 	

@@ -1,3 +1,8 @@
+/**
+ * Request: Manages the http request
+ * @author      Alfonso Fernandez-Barandiaran
+ */
+
 package webserver; 
 
 import java.io.BufferedReader;
@@ -8,14 +13,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-/**
- * Manages the http request
- * @author      Alfonso Fernandez-Barandiaran
- */
 
 public class Request {
 
@@ -103,5 +102,4 @@ public class Request {
 
         return headers;
     }
-
 }

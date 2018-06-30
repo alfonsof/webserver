@@ -1,3 +1,8 @@
+/**
+ * Response: Manages the http response
+ * @author      Alfonso Fernandez-Barandiaran
+ */
+
 package webserver;
 
 import java.io.File;
@@ -13,11 +18,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-/**
- * Manages the http response
- * @author      Alfonso Fernandez-Barandiaran
- */
 
 public class Response {
 	
@@ -309,5 +309,4 @@ public class Response {
         
         return buffer.toString();
     }
-
 }

@@ -1,3 +1,8 @@
+/**
+ * HttpHandler: Manages the http request and response
+ * @author      Alfonso Fernandez-Barandiaran
+ */
+
 package webserver;
 
 import java.io.BufferedReader;
@@ -13,11 +18,6 @@ import java.net.SocketTimeoutException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-/**
- * Manages the http request and response
- * @author      Alfonso Fernandez-Barandiaran
- */
 
 public class HttpHandler {
 	

@@ -1,13 +1,16 @@
+/**
+ * Test the Web Server
+ * @author      Alfonso Fernandez-Barandiaran
+ */
+
 package webserver;
 
 import static org.junit.Assert.assertEquals;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 import org.apache.http.HttpVersion;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -17,18 +20,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-
-
-
-
-
-/**
- * Test the Web Server
- * @author      Alfonso Fernandez-Barandiaran
- * @version     1.1
- * @since       2016-12-04
- */
 
 public class WebServerTest {
 
@@ -47,7 +38,7 @@ public class WebServerTest {
      */
 	@BeforeClass 
 	public static void setUpBeforeClass() {
-		ServerSettings serverSettings = new ServerSettings();
+		ServerSettings serverSettings = new ServerSettings(true);
 		int serverPort = serverSettings.getServerPort();
 		logger.info("\nServerPort : " + serverPort);
 		testUrl.append(Integer.toString(serverPort)).append("/index.html");
@@ -299,5 +290,4 @@ public class WebServerTest {
 			logger.error("test" + command +"Request: ", e);
 		}
 	}
-
 }
