@@ -47,10 +47,10 @@ Notes
 
   You can create it in 2 ways:
   
-  - with maven and goals "package" (mvn package) (Eclipse Run: Websever-package):
+  - Using Maven and goals "package" (mvn package) (Eclipse Run: Websever-package):
     - webserver.jar: 				JAR including dependencies
 
-  - with Eclipse in WebServer root:
+  - Using Eclipse in WebServer project:
     - File/Export
     - Runnable JAR file
     - Extract required libraries into generated JAR
