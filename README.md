@@ -18,10 +18,10 @@ Features
   - ThreadsNumber: Number of threads running in the webserver thread-pool.
 
   Default values if the Web Server does not find a "webserver.properties" file:
-  ServerPort=9090
-  DocumentRoot=wwwdocs/
-  DirectoryListing=y
-  ThreadsNumber=10
+  - ServerPort=9090
+  - DocumentRoot=wwwdocs/
+  - DirectoryListing=y
+  - ThreadsNumber=10
 
 Libraries
 ---------
