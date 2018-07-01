@@ -17,19 +17,19 @@ import org.apache.logging.log4j.LogManager;
  * @author      Alfonso Fernandez-Barandiaran
  */
 public class ThreadPooledWebServer implements Runnable {
-	private static final Logger logger = LogManager.getLogger(ThreadPooledWebServer.class.getName());
-	private ServerSettings 	serverSettings;
-    private int          	serverPort    = 9090;
-    private ServerSocket 	serverSocket  = null;
-    private boolean      	isStopped     = false;
+    private static final Logger logger = LogManager.getLogger(ThreadPooledWebServer.class.getName());
+    private ServerSettings  serverSettings;
+    private int             serverPort    = 9090;
+    private ServerSocket    serverSocket  = null;
+    private boolean         isStopped     = false;
     private ExecutorService threadPool;
 
     /**
      * Class constructor
-     * @param serverSettings	Settings of the Web Server
+     * @param serverSettings    Settings of the Web Server
      */
     public ThreadPooledWebServer(ServerSettings serverSettings) {
-    	this.serverSettings = serverSettings;
+        this.serverSettings = serverSettings;
         this.serverPort = serverSettings.getServerPort();
         this.threadPool = Executors.newFixedThreadPool(serverSettings.getNThreads());
     }
@@ -39,7 +39,7 @@ public class ThreadPooledWebServer implements Runnable {
      */
     @Override
     public void run() {
-        Thread       	runningThread = null;
+        Thread          runningThread = null;
         
         synchronized (this) {
             runningThread = Thread.currentThread();
@@ -74,7 +74,7 @@ public class ThreadPooledWebServer implements Runnable {
         try {
             serverSocket.close();
         } catch (IOException e) {
-        	logger.error("Error closing Web Server", e);
+            logger.error("Error closing Web Server", e);
             throw new WebServerException("Error closing Web Server", e);
         }
     }
@@ -83,8 +83,8 @@ public class ThreadPooledWebServer implements Runnable {
         try {
             serverSocket = new ServerSocket(serverPort);
         } catch (IOException e) {
-        	logger.error("Cannot open port: " + serverPort, e);
-        	throw new WebServerException("Cannot open port: " + serverPort, e);
+            logger.error("Cannot open port: " + serverPort, e);
+            throw new WebServerException("Cannot open port: " + serverPort, e);
         }
     }
 

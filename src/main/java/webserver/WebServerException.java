@@ -9,8 +9,8 @@ package webserver;
  * @author      Alfonso Fernandez-Barandiaran
  */
 public class WebServerException extends RuntimeException {
-	
-	/**
+    
+    /**
      * Class constructor
      */
     public WebServerException() {
@@ -19,24 +19,24 @@ public class WebServerException extends RuntimeException {
 
     /**
      * Class constructor
-     * @param s		Message
+     * @param s     Message
      */
     public WebServerException(String s) {
         super(s);
     }
     
-	/**
+    /**
      * Class constructor
-     * @param s				Message
-     * @param throwable		Exception
+     * @param s             Message
+     * @param throwable     Exception
      */
     public WebServerException(String s, Throwable throwable) {
         super(s, throwable);
     }
     
-	/**
+    /**
      * Class constructor
-     * @param throwable		Exception
+     * @param throwable     Exception
      */
     public WebServerException(Throwable throwable) {
         super(throwable);

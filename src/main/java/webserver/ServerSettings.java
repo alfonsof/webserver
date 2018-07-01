@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
  * @author      Alfonso Fernandez-Barandiaran
  */
 public class ServerSettings {
-	
+    
     /**
      * Port number for web server by default
      */
@@ -118,7 +118,7 @@ public class ServerSettings {
 
     // Number of threads in web server
     private int nThreads = N_THREADS_DEFAULT;
-	
+    
     // Max buffer size for a file
     private int fileBufferSize = FILE_BUFFER_SIZE;
 
@@ -130,12 +130,12 @@ public class ServerSettings {
 
     /**
      * Class constructor
-     * @param readConfigFile	true = read config file / false = not read config file  
+     * @param readConfigFile    true = read config file / false = not read config file  
      */
     public ServerSettings(boolean readConfigFile) {
-    	if (readConfigFile) {
-    		readConfig();
-    	}
+        if (readConfigFile) {
+            readConfig();
+        }
     }
     
     /**
@@ -143,7 +143,7 @@ public class ServerSettings {
      * @return int
      */
     public int getServerPort() {
-    	return serverPort;
+        return serverPort;
     }
     
     /**
@@ -151,7 +151,7 @@ public class ServerSettings {
      * @return String
      */
     public String getDocumentRoot() {
-    	return documentRoot;
+        return documentRoot;
     }
     
     /**
@@ -159,7 +159,7 @@ public class ServerSettings {
      * @return boolean
      */
     public boolean getDirectoryListing() {
-    	return directoryListing;
+        return directoryListing;
     }
 
     /**
@@ -167,15 +167,15 @@ public class ServerSettings {
      * @return int
      */
     public int getNThreads() {
-    	return nThreads;
+        return nThreads;
     }
-	
+    
     /**
      * Get Max buffer size for a file
      * @return int
      */
     public int getFileBufferSize() {
-    	return fileBufferSize;
+        return fileBufferSize;
     }
 
     /**
@@ -183,7 +183,7 @@ public class ServerSettings {
      * @return int
      */
     public int getRequestReadTimeout() {
-    	return requestReadTimeout;
+        return requestReadTimeout;
     }
 
     /**
@@ -191,72 +191,72 @@ public class ServerSettings {
      * @return int
      */
     public int getHeaderReadTimeout() {
-    	return headerReadTimeout;
+        return headerReadTimeout;
     }
 
     // Read properties file for configuring the Web Server
     private void readConfig() {
-    	Properties props = new Properties();
+        Properties props = new Properties();
         InputStream is = null;
 
         logger.trace("Read Config");
-		try { 
-			is = ServerSettings.class.getClassLoader().getResourceAsStream("webserver.properties");
+        try { 
+            is = ServerSettings.class.getClassLoader().getResourceAsStream("webserver.properties");
 
-			// load properties from properties file
-			if (is != null) {
-	        	logger.info("Config file found");
+            // load properties from properties file
+            if (is != null) {
+                logger.info("Config file found");
 
-				props.load(is);
-        	
-				// read properties
-				if (props.containsKey(SERVER_PORT_PROP_NAME)) {
-					serverPort = Integer.parseInt(props.getProperty(SERVER_PORT_PROP_NAME));
-					logger.trace(GETPROPERTY_MESSAGE + SERVER_PORT_PROP_NAME);
-				}
-				if (props.containsKey(DOCUMENT_ROOT_PROP_NAME)) {
-					documentRoot = props.getProperty(DOCUMENT_ROOT_PROP_NAME);
-					logger.trace(GETPROPERTY_MESSAGE + DOCUMENT_ROOT_PROP_NAME);
-				}
-				if (props.containsKey(DIRECTORY_LISTING_PROP_NAME)) {
-					directoryListing = getDirectoryListing(props.getProperty(DIRECTORY_LISTING_PROP_NAME));
-					logger.trace(GETPROPERTY_MESSAGE + DIRECTORY_LISTING_PROP_NAME);
-				}
-				if (props.containsKey(N_THREADS_PROP_NAME)) {
-					nThreads = Integer.parseInt(props.getProperty(N_THREADS_PROP_NAME));
-					logger.trace(GETPROPERTY_MESSAGE + N_THREADS_PROP_NAME);
-				}
-			} else {
-        		logger.info("Config file not found");
-        	}
-		} catch (IOException e) {
-			logger.info("Config file not found", e);
-		} finally {
-			if (is != null) {
-				try {
-					is.close();
-				} catch (IOException e) {
-					logger.error("Config file error", e);
-				}
-			}
-		}
-		logger.trace("Server Port: " + serverPort);
-		logger.trace("Document Root: " + documentRoot);
-		logger.trace("Directory Listing: " + directoryListing);
-		logger.trace("Threads number: " + nThreads);
-		logger.trace("File Buffer Size: " + fileBufferSize);
-		logger.trace("Request Read Timeout: " + requestReadTimeout);
-		logger.trace("Header Read Timeout: " + headerReadTimeout);
+                props.load(is);
+            
+                // read properties
+                if (props.containsKey(SERVER_PORT_PROP_NAME)) {
+                    serverPort = Integer.parseInt(props.getProperty(SERVER_PORT_PROP_NAME));
+                    logger.trace(GETPROPERTY_MESSAGE + SERVER_PORT_PROP_NAME);
+                }
+                if (props.containsKey(DOCUMENT_ROOT_PROP_NAME)) {
+                    documentRoot = props.getProperty(DOCUMENT_ROOT_PROP_NAME);
+                    logger.trace(GETPROPERTY_MESSAGE + DOCUMENT_ROOT_PROP_NAME);
+                }
+                if (props.containsKey(DIRECTORY_LISTING_PROP_NAME)) {
+                    directoryListing = getDirectoryListing(props.getProperty(DIRECTORY_LISTING_PROP_NAME));
+                    logger.trace(GETPROPERTY_MESSAGE + DIRECTORY_LISTING_PROP_NAME);
+                }
+                if (props.containsKey(N_THREADS_PROP_NAME)) {
+                    nThreads = Integer.parseInt(props.getProperty(N_THREADS_PROP_NAME));
+                    logger.trace(GETPROPERTY_MESSAGE + N_THREADS_PROP_NAME);
+                }
+            } else {
+                logger.info("Config file not found");
+            }
+        } catch (IOException e) {
+            logger.info("Config file not found", e);
+        } finally {
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    logger.error("Config file error", e);
+                }
+            }
+        }
+        logger.trace("Server Port: " + serverPort);
+        logger.trace("Document Root: " + documentRoot);
+        logger.trace("Directory Listing: " + directoryListing);
+        logger.trace("Threads number: " + nThreads);
+        logger.trace("File Buffer Size: " + fileBufferSize);
+        logger.trace("Request Read Timeout: " + requestReadTimeout);
+        logger.trace("Header Read Timeout: " + headerReadTimeout);
     }
 
     // Put Directory Listing value
     private boolean getDirectoryListing(String value) {
-    	boolean dirListing = false;
-    	
-		if ("y".equalsIgnoreCase(value)) {
-			dirListing = true;
-		}
-		
-		return dirListing;
+        boolean dirListing = false;
+        
+        if ("y".equalsIgnoreCase(value)) {
+            dirListing = true;
+        }
+        
+        return dirListing;
     }
 }

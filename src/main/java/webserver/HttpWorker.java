@@ -15,17 +15,17 @@ import org.apache.logging.log4j.Logger;
  */
 public class HttpWorker implements Runnable {
 
-	private static final Logger logger = LogManager.getLogger(HttpWorker.class.getName());
-	private ServerSettings serverSettings;
-	private Socket clientSocket = null;
+    private static final Logger logger = LogManager.getLogger(HttpWorker.class.getName());
+    private ServerSettings serverSettings;
+    private Socket clientSocket = null;
 
     /**
      * Class constructor
-     * @param serverSettings	Settings of the Web Server
-     * @param clientSocket		Socket of a client
+     * @param serverSettings    Settings of the Web Server
+     * @param clientSocket      Socket of a client
      */
     public HttpWorker(ServerSettings serverSettings, Socket clientSocket) {
-    	this.serverSettings = serverSettings;
+        this.serverSettings = serverSettings;
         this.clientSocket = clientSocket;
     }
 
@@ -34,11 +34,11 @@ public class HttpWorker implements Runnable {
      */
     @Override
     public void run() {
-    	try {
-    		HttpHandler httpHandler = new HttpHandler(serverSettings, clientSocket);
-    		httpHandler.handleConnection();
+        try {
+            HttpHandler httpHandler = new HttpHandler(serverSettings, clientSocket);
+            httpHandler.handleConnection();
         } catch (IOException e) {
-        	logger.error("HttpWorker: ", e);
+            logger.error("HttpWorker: ", e);
         }
     }
 }
