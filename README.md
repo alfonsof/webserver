@@ -1,66 +1,68 @@
-Web Server v 1.1
-================
+# Web Server
 
-A multi-threaded (e.g. file-based) web server with thread-pooling implemented in Java.
+A multithreaded (e.g. file-based) web server with thread-pooling implemented in Java.
 
 The Web Server uses a thread-pool with a fixed numbers of threads and a thread per connection that is incoming. 
 
-Features
---------
+## Requirements
 
-- Static file serving.
+* The code was written for:
+ 
+  *  Java 8
+  
+## Features
 
-- Configuration file "webserver.properties". You can configure this variables:
-  - ServerPort: Server port.
-  - DocumentRoot: Directory where files are served.
-  - DirectoryListing: Deactivate the listing of files when the URI does not content a file.
-    By default is activate. To deactivate use "DirectoryListing=n"
-  - ThreadsNumber: Number of threads running in the webserver thread-pool.
+* Static file serving.
+
+* Configuration file `webserver.properties`. You can configure these variables:
+  * `ServerPort`: Server port.
+  * `DocumentRoot`: Directory where files are served.
+  * `DirectoryListing`: Deactivates the listing of files when the URI does not content a file.
+    By default, is activated. To deactivate use `DirectoryListing=n`
+  * `ThreadsNumber`: Number of threads running in the webserver thread-pool.
 
   Default values if the Web Server does not find a "webserver.properties" file:
-  - ServerPort=9090
-  - DocumentRoot=wwwdocs/
-  - DirectoryListing=y
-  - ThreadsNumber=10
+  * `ServerPort=9090`
+  * `DocumentRoot=wwwdocs/`
+  * `DirectoryListing=y`
+  * `ThreadsNumber=10`
 
-Libraries
----------
+## Libraries
 
 The Web Server uses these libraries:
 
-- Apache log4j 2 version 2.7
+* `Apache log4j 2` version 2.7
   It is used for logging.
   The application writes informative, warning and error messages in the console and in a rolling file in "logs" directory.
   It is configured using the "log4j2.xml" file.
 
-- jUnit version 4.12
+* `jUnit` version 4.12
   It is used for testing.
   You can run the "WebServerTest" class in order to test the behaviour of the Web Server.
 
-- Apache HttpComponents version 4.5.2
+* `Apache HttpComponents` version 4.5.2
   It is used by the "WebServerTest" class in some tests in order to send command to the Web Server.
 
-Notes
------
+## Notes
 
-- Create the jar file:
+* Create the jar file:
 
   You can create it in 2 ways:
   
-  - Using Maven and goals "package" (mvn package) (Eclipse Run: Websever-package):
-    - webserver.jar: 				JAR including dependencies
+  * Using Maven and goals "package" (mvn package) (Eclipse Run: Webserver-package):
+    * `webserver.jar`: 				JAR including dependencies
 
-  - Using Eclipse in WebServer project:
-    - File/Export
-    - Runnable JAR file
-    - Extract required libraries into generated JAR
-    - webserver.jar generated
+  * Using Eclipse in WebServer project:
+    * File/Export
+    * Runnable JAR file
+    * Extract required libraries into generated JAR
+    * webserver.jar generated
 
-- Run the Web Server "webserver.jar":
+* Run the Web Server `webserver.jar`:
   
   You can run it in 2 ways:
 
-  - Using default configuration on logging (only error messages to console).
+  * Using default configuration on logging (only error messages to console).
   
     Executing this command:
   
@@ -68,7 +70,7 @@ Notes
     java -jar webserver.jar
     ```
     
-  - Using a configuration on logging, writing informative, warning and error messages in the console and in a rolling file in "logs" directory.
+  * Using a configuration on logging, writing informative, warning and error messages in the console and in a rolling file in `logs` directory.
   
     Executing this command:
 
@@ -76,7 +78,7 @@ Notes
     java -Dlog4j.configurationFile=resources/log4j2.xml -jar webserver.jar
     ```
     
-- In the document root "wwwdocs", there are several documents for testing the Web Server:
+* In the document root `wwwdocs`, there are several documents for testing the Web Server:
 
   | File		    | Comment                                   |
   | --------------- | ----------------------------------------- |
@@ -93,6 +95,10 @@ Notes
   | exceltest.xls	| Simple excel 97-2004 spreadsheet          |
   | exceltest.xlsx	| Simple excel spreadsheet                  |
   
-- You can test the WebServer using the class "WebServerTest".
+* You can test the WebServer using the class `WebServerTest`.
 
-- The Javadoc documentation in "doc" directory.
+* The Javadoc documentation in `doc` directory.
+
+## License
+
+This code is released under the MIT License. See LICENSE file.
