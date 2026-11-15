@@ -1,8 +1,13 @@
-# Web Server
+# Java Multithreaded Webserver
+A lightweight, multithreaded HTTP web server built from scratch in Java, featuring a custom fixed thread-pool architecture, robust concurrency handling, and static file/directory serving capabilities.
 
-A multithreaded (e.g. file-based) web server with thread-pooling implemented in Java.
+## Key Features
 
-The Web Server uses a thread-pool with a fixed numbers of threads and a thread per connection that is incoming. 
+* **Custom Thread-Pooling Architecture:** Utilizes an `ExecutorService` fixed thread pool (`ThreadPooledWebServer` & `HttpWorker`) to manage concurrent client connections efficiently.
+* **Socket & I/O Management:** Handles TCP client sockets with configurable read timeouts (`SocketTimeoutException` protection) for request lines and headers.
+* **Static File & Directory Serving:** Automatically resolves request URIs against a configured document root (`wwwdocs/`), supporting MIME-type mapping (HTML, CSS, JS, images, PDF) and optional HTML directory listings.
+* **Robust Error Handling & Logging:** Generates standard HTTP status responses (`200 OK`, `400 Bad Request`, `404 Not Found`, `408 Request Timeout`, `500 Server Error`, `501 Not Implemented`) integrated with **Log4j2**.
+* **Externalized Configuration:** Easily configurable via `webserver.properties` loaded from the classpath.
 
 ## Requirements
 
