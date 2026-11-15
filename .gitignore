@@ -20,6 +20,9 @@ out/
 .project
 .settings/
 
+# Visual Studio Code
+.vscode/
+
 # Package Files #
 *.jar
 *.war
@@ -31,6 +34,12 @@ out/
 
 # Mac
 .DS_Store
+._*
+.bash_profile
+
+# System files
+Thumbs.db
+*.epub
 
 # Sonar scanner
 .scannerwork
