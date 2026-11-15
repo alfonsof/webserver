@@ -8,17 +8,7 @@ A lightweight, multithreaded HTTP web server built from scratch in Java, featuri
 * **Static File & Directory Serving:** Automatically resolves request URIs against a configured document root (`wwwdocs/`), supporting MIME-type mapping (HTML, CSS, JS, images, PDF) and optional HTML directory listings.
 * **Robust Error Handling & Logging:** Generates standard HTTP status responses (`200 OK`, `400 Bad Request`, `404 Not Found`, `408 Request Timeout`, `500 Server Error`, `501 Not Implemented`) integrated with **Log4j2**.
 * **Externalized Configuration:** Easily configurable via `webserver.properties` loaded from the classpath.
-
-## Requirements
-
-* The code was written for:
- 
-  *  Java 8
   
-## Features
-
-* Static file serving.
-
 * Configuration file `webserver.properties`. You can configure these variables:
   * `ServerPort`: Server port.
   * `DocumentRoot`: Directory where files are served.
@@ -32,6 +22,12 @@ A lightweight, multithreaded HTTP web server built from scratch in Java, featuri
   * `DirectoryListing=y`
   * `ThreadsNumber=10`
 
+## Requirements
+
+* The code was written for:
+ 
+  *  Java 8
+  * 
 ## Libraries
 
 The Web Server uses these libraries:
