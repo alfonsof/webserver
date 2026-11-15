@@ -70,6 +70,15 @@ The Web Server uses these libraries:
     java -jar webserver.jar
     ```
     
+  * Accessing the web server from a browser:
+    ```
+    http://localhost:9090/index.html
+    ```
+
+    ```
+    http://localhost:9090
+    ```
+
   * Using a configuration on logging, writing informative, warning and error messages in the console and in a rolling file in `logs` directory.
   
     Executing this command:
