@@ -31,16 +31,16 @@ The Web Server uses a thread-pool with a fixed numbers of threads and a thread p
 
 The Web Server uses these libraries:
 
-* `Apache log4j 2` version 2.7
+* `Apache log4j 2`
   It is used for logging.
   The application writes informative, warning and error messages in the console and in a rolling file in "logs" directory.
   It is configured using the "log4j2.xml" file.
 
-* `jUnit` version 4.12
+* `jUnit 4`
   It is used for testing.
   You can run the "WebServerTest" class in order to test the behaviour of the Web Server.
 
-* `Apache HttpComponents` version 4.5.2
+* `Apache HttpComponents`
   It is used by the "WebServerTest" class in some tests in order to send command to the Web Server.
 
 ## Notes
