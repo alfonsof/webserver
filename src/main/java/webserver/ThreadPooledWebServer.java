@@ -1,7 +1,3 @@
-/**
- * ThreadPooledWebServer: Manages the thread pooled web server
- */
-
 package webserver;
 
 import java.io.IOException;
@@ -13,8 +9,10 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 /**
- * Manages the thread pooled web server
- * @author      Alfonso Fernandez-Barandiaran
+ * Implements a multithreaded web server using a fixed thread pool to manage
+ * incoming client connections concurrently.
+ *
+ * @author Alfonso Fernandez-Barandiaran
  */
 public class ThreadPooledWebServer implements Runnable {
     private static final Logger logger = LogManager.getLogger(ThreadPooledWebServer.class.getName());
@@ -25,8 +23,9 @@ public class ThreadPooledWebServer implements Runnable {
     private ExecutorService threadPool;
 
     /**
-     * Class constructor
-     * @param serverSettings    Settings of the Web Server
+     * Constructs a new {@code ThreadPooledWebServer} with the specified server settings.
+     *
+     * @param serverSettings configuration settings for the web server
      */
     public ThreadPooledWebServer(ServerSettings serverSettings) {
         this.serverSettings = serverSettings;
@@ -35,7 +34,8 @@ public class ThreadPooledWebServer implements Runnable {
     }
 
     /**
-     * Runs Web Server
+     * Starts the web server main loop, opening the server socket and continuously accepting
+     * incoming client connections, which are then dispatched to the worker thread pool.
      */
     @Override
     public void run() {
@@ -67,7 +67,7 @@ public class ThreadPooledWebServer implements Runnable {
     }
 
     /**
-     * Stops Web Server
+     * Stops the web server by setting the stopped flag and closing the server socket.
      */
     public synchronized void stop() {
         isStopped = true;
@@ -79,6 +79,11 @@ public class ThreadPooledWebServer implements Runnable {
         }
     }
 
+    /**
+     * Opens the server socket on the configured server port.
+     *
+     * @throws WebServerException if the server socket cannot be opened
+     */
     private void openServerSocket() {
         try {
             serverSocket = new ServerSocket(serverPort);
@@ -88,6 +93,11 @@ public class ThreadPooledWebServer implements Runnable {
         }
     }
 
+    /**
+     * Checks whether the web server has been requested to stop.
+     *
+     * @return {@code true} if the server is stopped; {@code false} otherwise
+     */
     private synchronized boolean isStopped() {
         return isStopped;
     }

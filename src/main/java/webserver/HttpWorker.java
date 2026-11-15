@@ -1,7 +1,3 @@
-/**
- * HttpWorker: Implements the worker in order to manage every http connection 
- */
-
 package webserver;
 
 import java.io.IOException;
@@ -10,8 +6,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Implements the worker in order to manage every http connection 
- * @author      Alfonso Fernandez-Barandiaran
+ * Implements a worker thread to manage individual HTTP connections concurrently.
+ *
+ * @author Alfonso Fernandez-Barandiaran
  */
 public class HttpWorker implements Runnable {
 
@@ -20,9 +17,10 @@ public class HttpWorker implements Runnable {
     private Socket clientSocket = null;
 
     /**
-     * Class constructor
-     * @param serverSettings    Settings of the Web Server
-     * @param clientSocket      Socket of a client
+     * Constructs a new {@code HttpWorker} instance.
+     *
+     * @param serverSettings settings of the web server
+     * @param clientSocket   socket representing the client connection
      */
     public HttpWorker(ServerSettings serverSettings, Socket clientSocket) {
         this.serverSettings = serverSettings;
@@ -30,7 +28,8 @@ public class HttpWorker implements Runnable {
     }
 
     /**
-     * Run a instance of the Web Server
+     * Executes the worker task, initializing the {@link HttpHandler}
+     * to process the client connection and handling any potential I/O errors.
      */
     @Override
     public void run() {

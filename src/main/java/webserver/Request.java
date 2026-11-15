@@ -1,8 +1,4 @@
-/**
- * Request: Manages the http request
- */
-
-package webserver; 
+package webserver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,8 +12,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Manages the http request
- * @author      Alfonso Fernandez-Barandiaran
+ * Manages the parsing and reading of HTTP requests from a client connection.
+ *
+ * @author Alfonso Fernandez-Barandiaran
  */
 public class Request {
 
@@ -28,15 +25,17 @@ public class Request {
     private InputStream input;
     private BufferedReader reader;
     private String requestLine;
-    
+
     /**
-     * Class constructor
-     * @param serverSettings    Settings of the Web Server
-     * @param clientSocket      Socket of a client
-     * @param input             Input of the request
-     * @param reader            Buffer for the request
+     * Constructs a new {@code Request} instance.
+     *
+     * @param serverSettings settings of the web server
+     * @param clientSocket   socket representing the client connection
+     * @param input          input stream of the client request
+     * @param reader         buffered reader for reading request lines and headers
      */
-    public Request(ServerSettings serverSettings, Socket clientSocket, InputStream input, BufferedReader reader) {
+    public Request(ServerSettings serverSettings, Socket clientSocket,
+                   InputStream input, BufferedReader reader) {
         this.serverSettings = serverSettings;
         this.clientSocket = clientSocket;
         this.input = input;
@@ -46,10 +45,10 @@ public class Request {
     }
 
     /**
-     * Reads the http request
-     * @throws IOException If an input or output 
-     *                     exception occurred
-     * @return boolean
+     * Reads and parses the HTTP request line and headers from the input stream.
+     *
+     * @return {@code true} if the request line and headers are successfully read and valid; {@code false} otherwise
+     * @throws IOException if an input or output exception occurs during reading
      */
     public boolean readRequest() throws IOException {
         Map<String, String> requestHeaders;
@@ -66,13 +65,21 @@ public class Request {
     }
 
     /**
-     * Reads the line of the request
-     * @return String
+     * Returns the HTTP request line read from the client.
+     *
+     * @return the request line string
      */
     public String getRequestLine() {
         return this.requestLine;
     }
-    
+
+    /**
+     * Reads the HTTP request line from the client input stream,
+     * applying the configured request read timeout.
+     *
+     * @return the request line string, or null if the stream ends
+     * @throws IOException if an input or output exception occurs
+     */
     private String readRequestLine() throws IOException {
         String reqLine;
         
@@ -82,7 +89,15 @@ public class Request {
     
         return reqLine;
     }
-    
+
+    /**
+     * Reads and parses the HTTP request headers until an empty line is encountered,
+     * applying the configured header read timeout.
+     *
+     * @param reader the buffered reader to read header lines from
+     * @return a map containing the parsed header names and lowercase values
+     * @throws IOException if an input or output exception occurs
+     */
     private Map<String, String> readRequestHeaders(BufferedReader reader) throws IOException {
         Map<String, String> headers = new LinkedHashMap<>();
         int length;

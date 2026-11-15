@@ -1,42 +1,43 @@
-/**
- * WebServerException: Manages the WebServerException
- */
-
 package webserver;
 
 /**
- * Manages the WebServerException
- * @author      Alfonso Fernandez-Barandiaran
+ * Custom runtime exception used to handle errors specific to the web server execution,
+ * socket management, or I/O operations.
+ *
+ * @author Alfonso Fernandez-Barandiaran
  */
 public class WebServerException extends RuntimeException {
-    
+
     /**
-     * Class constructor
+     * Constructs a new {@code WebServerException} with no detail message.
      */
     public WebServerException() {
         super();
     }
 
     /**
-     * Class constructor
-     * @param s     Message
+     * Constructs a new {@code WebServerException} with the specified detail message.
+     *
+     * @param s the detail message
      */
     public WebServerException(String s) {
         super(s);
     }
-    
+
     /**
-     * Class constructor
-     * @param s             Message
-     * @param throwable     Exception
+     * Constructs a new {@code WebServerException} with the specified detail message and cause.
+     *
+     * @param s         the detail message
+     * @param throwable the cause of the exception
      */
     public WebServerException(String s, Throwable throwable) {
         super(s, throwable);
     }
-    
+
     /**
-     * Class constructor
-     * @param throwable     Exception
+     * Constructs a new {@code WebServerException} with the specified cause.
+     *
+     * @param throwable the cause of the exception
      */
     public WebServerException(Throwable throwable) {
         super(throwable);

@@ -1,7 +1,3 @@
-/**
- * ServerSettings: Contains the settings of the Web Server and read of configuration file
- */
-
 package webserver;
 
 import java.io.IOException;
@@ -11,190 +7,154 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Contains the settings of the Web Server and read of configuration file
- * @author      Alfonso Fernandez-Barandiaran
+ * Manages the configuration settings of the web server and handles
+ * reading properties from the configuration file.
+ *
+ * @author Alfonso Fernandez-Barandiaran
  */
 public class ServerSettings {
-    
-    /**
-     * Port number for web server by default
-     */
+
+    /** Port number for web server by default. */
     public static final int SERVER_PORT_DEFAULT = 9090;
-    
-    /**
-     * Document root directory by default
-     */
+
+    /** Document root directory by default. */
     public static final String DOCUMENT_ROOT_DEFAULT = "wwwdocs/";
     
-    /**
-     * Directory listing allowed by default
-     */
+    /** Directory listing allowed by default. */
     public static final boolean DIRECTORY_LISTING = true;
     
-    /**
-     * Threads number by default
-     */
+    /** Threads number by default. */
     public static final int N_THREADS_DEFAULT = 10;
     
-    /**
-     * Max buffer size for a file by default
-     */
+    /** Max buffer size for a file by default. */
     public static final int FILE_BUFFER_SIZE = 65536;
 
-    /**
-     * The socket timeout when waiting for line request by default
-     */
+    /** The socket timeout when waiting for line request by default. */
     public static final int REQUEST_READ_TIMEOUT = 5000;
 
-    /**
-     * The socket timeout when waiting for headers by default
-     */
+    /** The socket timeout when waiting for headers by default. */
     public static final int HEADER_READ_TIMEOUT = 2000;
 
-    /**
-     * Config file properties names for Server port number
-     */
+    /** Config file properties names for Server port number. */
     public static final String SERVER_PORT_PROP_NAME = "ServerPort";
 
-    /**
-     * Config file properties names for document root directory
-     */
+    /** Config file properties names for document root directory. */
     public static final String DOCUMENT_ROOT_PROP_NAME = "DocumentRoot";
 
-    /**
-     * Config file properties names for directory listing allowed
-     */
+    /** Config file properties names for directory listing allowed. */
     public static final String DIRECTORY_LISTING_PROP_NAME = "DirectoryListing";
     
-    /**
-     * Config file properties names for threads number in Web Server
-     */
+    /** Config file properties names for threads number in Web Server. */
     public static final String N_THREADS_PROP_NAME = "ThreadsNumber";
     
-    /**
-     * Status Code 200: OK
-     */
+    /** Status Code 200: OK */
     public static final String HTTP_STR_OK = "200 OK";
     
-    /**
-     * Status Code 400: Client error - Bad Request
-     */
+    /** Status Code 400: Client error - Bad Request */
     public static final String HTTP_STR_BAD_REQUEST = "400 Bad Request";
     
-    /**
-     * Status Code 404: Client error - Not Found
-     */
+    /** Status Code 404: Client error - Not Found */
     public static final String HTTP_STR_NOT_FOUND = "404 Not Found";
     
-    /**
-     * Status Code 408: Client error - Request Time-out
-     */
+    /** Status Code 408: Client error - Request Time-out */
     public static final String HTTP_STR_REQUEST_TIMEOUT = "408 Request Time-out";
     
-    /**
-     * Status Code 500: Server error - Internal Server Error
-     */
+    /** Status Code 500: Server error - Internal Server Error */
     public static final String HTTP_STR_SERVER_ERROR = "500 Internal Server Error";
 
-    /**
-     * Status Code 501: Server error - Not Implemented
-     */
+    /** Status Code 501: Server error - Not Implemented */
     public static final String HTTP_STR_NOT_IMPLEMENTED = "501 Not Implemented";
     
-    // Message for GetProperty
     private static final String GETPROPERTY_MESSAGE = "getProperty: ";
-    
-    // Logger
     private static final Logger logger = LogManager.getLogger(ServerSettings.class.getName());
 
-    // Port number for web server
     private int serverPort = SERVER_PORT_DEFAULT;
-    
-    // Document root directory
     private String documentRoot = DOCUMENT_ROOT_DEFAULT;
-    
-    // Directory listing allowed
     private boolean directoryListing = DIRECTORY_LISTING;
-
-    // Number of threads in web server
     private int nThreads = N_THREADS_DEFAULT;
-    
-    // Max buffer size for a file
     private int fileBufferSize = FILE_BUFFER_SIZE;
-
-    // The socket timeout when waiting for line request
     private int requestReadTimeout = REQUEST_READ_TIMEOUT;
-
-    // The socket timeout when waiting for headers
     private int headerReadTimeout = HEADER_READ_TIMEOUT;
 
     /**
-     * Class constructor
-     * @param readConfigFile    true = read config file / false = not read config file  
+     * Constructs a new {@code ServerSettings} instance.
+     *
+     * @param readConfigFile {@code true} to read configuration from the properties file;
+     *                       {@code false} to use default settings
      */
     public ServerSettings(boolean readConfigFile) {
         if (readConfigFile) {
             readConfig();
         }
     }
-    
+
     /**
-     * Get Port number for web server
-     * @return int
+     * Returns the port number for the web server.
+     *
+     * @return the server port number
      */
     public int getServerPort() {
         return serverPort;
     }
-    
+
     /**
-     * Get Document root directory
-     * @return String
+     * Returns the document root directory path.
+     *
+     * @return the document root string
      */
     public String getDocumentRoot() {
         return documentRoot;
     }
-    
+
     /**
-     * Get Directory listing allowed
-     * @return boolean
+     * Returns whether directory listing is allowed.
+     *
+     * @return {@code true} if directory listing is enabled; {@code false} otherwise
      */
     public boolean getDirectoryListing() {
         return directoryListing;
     }
 
     /**
-     * Get Number of threads in web server
-     * @return int
+     * Returns the number of worker threads configured for the web server.
+     *
+     * @return the number of threads
      */
     public int getNThreads() {
         return nThreads;
     }
-    
+
     /**
-     * Get Max buffer size for a file
-     * @return int
+     * Returns the max buffer size for reading files.
+     *
+     * @return the file buffer size in bytes
      */
     public int getFileBufferSize() {
         return fileBufferSize;
     }
 
     /**
-     * Get The socket timeout when waiting for line request
-     * @return int
+     * Returns the socket timeout when waiting for the request line.
+     *
+     * @return the request read timeout in milliseconds
      */
     public int getRequestReadTimeout() {
         return requestReadTimeout;
     }
 
     /**
-     * Get The socket timeout when waiting for headers
-     * @return int
+     * Returns the socket timeout when waiting for request headers.
+     *
+     * @return the header read timeout in milliseconds
      */
     public int getHeaderReadTimeout() {
         return headerReadTimeout;
     }
 
-    // Read properties file for configuring the Web Server
+    /**
+     * Reads the properties file (`webserver.properties`) from the classpath
+     * to configure the web server parameters.
+     */
     private void readConfig() {
         Properties props = new Properties();
         InputStream is = null;
@@ -249,7 +209,12 @@ public class ServerSettings {
         logger.trace("Header Read Timeout: " + headerReadTimeout);
     }
 
-    // Put Directory Listing value
+    /**
+     * Parses the directory listing property value string into a boolean.
+     *
+     * @param value the property string value from the configuration file
+     * @return {@code true} if the value equals "y" (case-insensitive); {@code false} otherwise
+     */
     private boolean getDirectoryListing(String value) {
         boolean dirListing = false;
         

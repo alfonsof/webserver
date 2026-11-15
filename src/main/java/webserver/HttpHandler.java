@@ -1,7 +1,3 @@
-/**
- * HttpHandler: Manages the http request and response
- */
-
 package webserver;
 
 import java.io.BufferedReader;
@@ -19,29 +15,32 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Manages the http request and response
- * @author      Alfonso Fernandez-Barandiaran
+ * Manages the HTTP request and response lifecycle for a client connection.
+ *
+ * @author Alfonso Fernandez-Barandiaran
  */
 public class HttpHandler {
-    
+
     private static final Logger logger = LogManager.getLogger(HttpHandler.class.getName());
     private ServerSettings serverSettings;
     private Socket clientSocket = null;
 
     /**
-     * Class constructor
-     * @param serverSettings    Settings of the Web Server
-     * @param clientSocket      Socket of a client
+     * Constructs a new {@code HttpHandler} instance.
+     *
+     * @param serverSettings settings of the web server
+     * @param clientSocket   socket representing the client connection
      */
     public HttpHandler(ServerSettings serverSettings, Socket clientSocket) {
         this.serverSettings = serverSettings;
         this.clientSocket = clientSocket;
     }
-    
+
     /**
-     * Handles the connection
-     * @throws IOException If an input or output 
-     *                     exception occurred
+     * Handles the client connection by reading the HTTP request, processing it,
+     * and writing the corresponding HTTP response.
+     *
+     * @throws IOException if an input or output exception occurs during communication
      */
     public void handleConnection() throws IOException {
         InputStream input  = clientSocket.getInputStream();
