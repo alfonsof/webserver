@@ -75,7 +75,11 @@ The document root includes test files such as `index.html`, `images.html` (with 
 
 ## Testing
 
-* You can test the WebServer using the class `WebServerIT`.
+You can run the integration tests using the `WebServerIT` class (make sure the Web Server is already running before executing the tests):
+
+  ```bash
+  mvn test -Dtest=WebServerIT
+  ```
 
 ## Documentation
 
