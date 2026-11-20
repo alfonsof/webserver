@@ -11,14 +11,13 @@ A lightweight, multithreaded HTTP web server built from scratch in Java, featuri
 
 ## Configuration
 
-* Configuration file `webserver.properties`. You can configure these variables:
+* The server is configured via the `webserver.properties` file. You can customize the following properties:
   * `ServerPort`: Server port.
-  * `DocumentRoot`: Directory where files are served.
-  * `DirectoryListing`: Deactivates the listing of files when the URI does not contain a file.
-    By default, it is activated. To deactivate use `DirectoryListing=n`
+  * `DocumentRoot`: Directory where files are served from.
+  * `DirectoryListing`: Disables directory listing when the URI does not point to a specific file (`y` by default; set to `n` to disable).
   * `ThreadsNumber`: Number of threads running in the webserver thread-pool.
 
-  Default values if the Web Server does not find a "webserver.properties" file:
+* If no `webserver.properties` file is found, the server uses these default values:
   * `ServerPort=9090`
   * `DocumentRoot=wwwdocs/`
   * `DirectoryListing=y`
@@ -34,63 +33,37 @@ A lightweight, multithreaded HTTP web server built from scratch in Java, featuri
 
 The Web Server uses these libraries:
 
-* `Apache log4j 2`
-  It is used for logging.
-  The application writes informative, warning and error messages in the console and in a rolling file in "logs" directory.
-  It is configured using the "log4j2.xml" file.
+## Libraries
 
-* `JUnit 4`
-  It is used for testing.
-  You can run the "WebServerTest" class in order to test the behavior of the Web Server.
+The Web Server uses the following libraries:
 
-* `Apache HttpComponents`
-  It is used by the "WebServerTest" class in some tests in order to send command to the Web Server.
+- **Apache Log4j 2:** Used for logging. Writes informative, warning, and error messages to the console and to a rolling file in the `logs/` directory (configured via `log4j2.xml`).
+- **JUnit 4:** Used for unit and integration testing via the `WebServerTest` class.
+- **Apache HttpComponents:** Used by `WebServerTest` to send HTTP commands to the Web Server during tests.
+
 
 ## Build & Run
 
-* Create the jar file:
+## Build & Run
 
-  You can create it in 2 ways:
-  
-  * Using Maven and goals "package" (mvn package) (Eclipse Run: Webserver-package):
-    * `webserver.jar`: 				JAR including dependencies
+### 1. Build the JAR file
+Create `webserver.jar` with all dependencies:
+* **Maven:** `mvn package`
+* **Eclipse:** Export via **File > Export > Runnable JAR file**, selecting **Extract required libraries into generated JAR** as `webserver.jar`.
 
-  * Using Eclipse in WebServer project:
-    * File/Export
-    * Runnable JAR file
-    * Extract required libraries into generated JAR
-    * webserver.jar generated
+### 2. Run the Web Server
+* **Default logging** (errors only to console):
+  ```bash
+  java -jar webserver.jar
+  ```
+* **Custom Log4j2 configuration** (detailed logs to console and `logs/` directory):
+  ```bash
+  java -Dlog4j.configurationFile=resources/log4j2.xml -jar webserver.jar
+  ```
+Access the server at `http://localhost:9090` or `http://localhost:9090/index.html`.
 
-* Run the Web Server `webserver.jar`:
-  
-  You can run it in 2 ways:
-
-  * Using default configuration on logging (only error messages to console).
-  
-    Executing this command:
-  
-    ```
-    java -jar webserver.jar
-    ```
-    
-  * Accessing the web server from a browser:
-    ```
-    http://localhost:9090/index.html
-    ```
-
-    ```
-    http://localhost:9090
-    ```
-
-  * Using a configuration on logging, writing informative, warning and error messages in the console and in a rolling file in `logs` directory.
-  
-    Executing this command:
-
-    ```
-    java -Dlog4j.configurationFile=resources/log4j2.xml -jar webserver.jar
-    ```
-    
-* In the document root `wwwdocs`, there are several documents for testing the Web Server:
+### 3. Sample Files in `wwwdocs/`
+The document root includes test files such as `index.html`, `images.html` (with associated `.gif` images), subdirectories (`dir/dir.html`), and various sample formats (`.gif`, `.jpg`, `.png`, `.doc`, `.docx`, `.pdf`, `.xls`, `.xlsx`).
 
   | File		    | Comment                                   |
   | --------------- | ----------------------------------------- |
@@ -113,7 +86,7 @@ The Web Server uses these libraries:
 
 ## Documentation
 
-* The Javadoc documentation in `docs` directory.
+* The Javadoc documentation is available in the `docs` directory.
 
 ## License
 
