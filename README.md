@@ -8,12 +8,14 @@ A lightweight, multithreaded HTTP web server built from scratch in Java, featuri
 * **Static File & Directory Serving:** Automatically resolves request URIs against a configured document root (`wwwdocs/`), supporting MIME-type mapping (HTML, CSS, JS, images, PDF) and optional HTML directory listings.
 * **Robust Error Handling & Logging:** Generates standard HTTP status responses (`200 OK`, `400 Bad Request`, `404 Not Found`, `408 Request Timeout`, `500 Server Error`, `501 Not Implemented`) integrated with **Log4j2**.
 * **Externalized Configuration:** Easily configurable via `webserver.properties` loaded from the classpath.
-  
+
+## Configuration
+
 * Configuration file `webserver.properties`. You can configure these variables:
   * `ServerPort`: Server port.
   * `DocumentRoot`: Directory where files are served.
-  * `DirectoryListing`: Deactivates the listing of files when the URI does not content a file.
-    By default, is activated. To deactivate use `DirectoryListing=n`
+  * `DirectoryListing`: Deactivates the listing of files when the URI does not contain a file.
+    By default, it is activated. To deactivate use `DirectoryListing=n`
   * `ThreadsNumber`: Number of threads running in the webserver thread-pool.
 
   Default values if the Web Server does not find a "webserver.properties" file:
@@ -37,14 +39,14 @@ The Web Server uses these libraries:
   The application writes informative, warning and error messages in the console and in a rolling file in "logs" directory.
   It is configured using the "log4j2.xml" file.
 
-* `jUnit 4`
+* `JUnit 4`
   It is used for testing.
-  You can run the "WebServerTest" class in order to test the behaviour of the Web Server.
+  You can run the "WebServerTest" class in order to test the behavior of the Web Server.
 
 * `Apache HttpComponents`
   It is used by the "WebServerTest" class in some tests in order to send command to the Web Server.
 
-## Notes
+## Build & Run
 
 * Create the jar file:
 
@@ -104,10 +106,14 @@ The Web Server uses these libraries:
   | pdftest.pdf		| Simple pdf document                       |
   | exceltest.xls	| Simple excel 97-2004 spreadsheet          |
   | exceltest.xlsx	| Simple excel spreadsheet                  |
-  
+
+## Testing
+
 * You can test the WebServer using the class `WebServerTest`.
 
-* The Javadoc documentation in `doc` directory.
+## Documentation
+
+* The Javadoc documentation in `docs` directory.
 
 ## License
 
